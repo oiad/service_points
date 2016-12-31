@@ -6,31 +6,31 @@ Axe Cops service point script updated for 1.0.6 by salival
 	
 Major Changes:
 
-This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 
-Instead of pricing things like the original way, prices are now done on a "worth" similar to how coins are done. The price value of items are below.
-If you are using coins, I would recommend using the _currencyModifier variable since coins typically are 10x the value of briefcase based currency (1 brief == 100,000 coins)
-(You can either set this _currencyModifier variable to 1 then set the proper value or use the modifier, the modifier is mainly for dual currency servers)
+	This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 
+	Instead of pricing things like the original way, prices are now done on a "worth" similar to how coins are done. The price value of items are below.
+	If you are using coins, I would recommend using the _currencyModifier variable since coins typically are 10x the value of briefcase based currency (1 brief == 100,000 coins)
+	(You can either set this _currencyModifier variable to 1 then set the proper value or use the modifier, the modifier is mainly for dual currency servers)
 
-1 silver = 1 worth
-1 10oz silver = 10 worth
-1 gold = 100 worth
-1 10oz gold = 1,000 worth
-1 briefcase = 10,000 worth
+	1 silver = 1 worth
+	1 10oz silver = 10 worth
+	1 gold = 100 worth
+	1 10oz gold = 1,000 worth
+	1 briefcase = 10,000 worth
 
-Please see dayz_code\configVariables.sqf for the value of gems (DZE_GemWorthArray) and their relevant worth if they are enabled.
+	Please see dayz_code\configVariables.sqf for the value of gems (DZE_GemWorthArray) and their relevant worth if they are enabled.
 
-Example config settings for _refuel_costs, _repair_costs and _rearm_costs:
+	Example config settings for _refuel_costs, _repair_costs and _rearm_costs:
 
-All 3 sections can either be made free, disabled or a specifc price with the following examples:
+	All 3 sections can either be made free, disabled or a specifc price with the following examples:
 
-["Air","free"] will make the vehicle config class of "Air" free for the specific action.
-["Air","disabled"] will make the vehicle config class of "Air" disabled for the specific action.
-["Air",2000] will make the vehicle config class of "Air" have a worth of 2000 for the specific action.
-["Armored_SUV_PMC",2000] will make the specific vehicle have a worth of 2000 for the specific action.
-["Armored_SUV_PMC","free"] will make the specific vehicle be free for the specific action.
-["Armored_SUV_PMC","disabled"] will make the specific vehicle be disabled for the specific action.
+	["Air","free"] will make the vehicle config class of "Air" free for the specific action.
+	["Air","disabled"] will make the vehicle config class of "Air" disabled for the specific action.
+	["Air",2000] will make the vehicle config class of "Air" have a worth of 2000 for the specific action.
+	["Armored_SUV_PMC",2000] will make the specific vehicle have a worth of 2000 for the specific action.
+	["Armored_SUV_PMC","free"] will make the specific vehicle be free for the specific action.
+	["Armored_SUV_PMC","disabled"] will make the specific vehicle be disabled for the specific action.
 
-Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
+	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
 
 Installation Steps -
 

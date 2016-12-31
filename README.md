@@ -4,7 +4,7 @@ Axe Cops service point script updated for 1.0.6 by salival
 	(original github url: https://github.com/vos/dayz/tree/master/service_point)
 	(original install/discussion url: https://epochmod.com/forum/topic/3935-release-vehicle-service-point-refuel-repair-rearm-script/)
 	
-*REQUIRES DAYZ EPOCH 1.0.6*
+**** *REQUIRES DAYZ EPOCH 1.0.6* ****
 	
 Major Changes:
 
@@ -38,9 +38,11 @@ Installation Steps -
 
 1) In your \dayzinstallfolder\MPMissions\dayz_1.Chernarus folder (or similar), create a subfolder called "scripts/service_points" or use another name if a folder with other add-on scripts exists.
 
-2) Place the files that you've downloaded below into the "scripts/service_points" folder
+2) Download this repo by clicking on the "Clone or Download" button and then click "Download ZIP" or click: https://github.com/oiad/service_points/archive/master.zip
 
-3) Add this to your init.sqf in the "if (!isDedicated) then { PUT HERE SOMEWHERE (at the end is ok) }" block (so it will only be started on your client and not the server):
+3) Place the files that you've downloaded below into the "scripts/service_points" folder
+
+4) Add this to your init.sqf in the "if (!isDedicated) then { PUT HERE SOMEWHERE (at the end is ok) }" block (so it will only be started on your client and not the server):
 
 	if (!isDedicated) then {
 		// ... some other stuff ...
@@ -48,8 +50,8 @@ Installation Steps -
 		execVM "service_point\service_point.sqf";
 	};
 
-4) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.
+5) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.
 	
-5) You're done! enjoy the new script! :)
+6) You're done! enjoy the new script! :)
 
 Credits - Axe Cop, salival

@@ -4,6 +4,8 @@ Axe Cops service point script updated for 1.0.6 by salival
 	(original github url: https://github.com/vos/dayz/tree/master/service_point)
 	(original install/discussion url: https://epochmod.com/forum/topic/3935-release-vehicle-service-point-refuel-repair-rearm-script/)
 	
+*REQUIRES DAYZ EPOCH 1.0.6*
+	
 Major Changes:
 
 	This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 

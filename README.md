@@ -49,7 +49,7 @@ Installation Steps -
 	if (!isDedicated) then {
 		// ... some other stuff ...
 		// add the next line somewhere in this block
-		execVM "service_point\service_point.sqf";
+		execVM "scripts\service_points\service_point.sqf";
 	};
 
 5) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.

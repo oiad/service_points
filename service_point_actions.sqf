@@ -82,7 +82,7 @@ if (_enoughMoney) then {
 			_hitpoints = _vehicle call vehicle_getHitpoints;
 			_allRepaired = true;
 			{
-				if ((vehicle player != _vehicle) || ([0,0,0] distance (velocity _vehicle) > 1)) exitWith {
+				if ((vehicle player != _vehicle) || {[0,0,0] distance (velocity _vehicle) > 1}) exitWith {
 					_allRepaired = false;
 					[format["Repairing of %1 stopped",_name],1] call dayz_rollingMessages;
 				};
@@ -122,9 +122,6 @@ if (_enoughMoney) then {
 			for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 
 			[format["%1 of %2 Rearmed",_weaponName,_name],1] call dayz_rollingMessages;
-
-			_message = format ["%1 (%2) rearmed %3 @%4",dayz_playerName, dayz_playerUID, typeOf _vehicle,mapGridPosition (getPosATL _vehicle)];
-			["rearm",_message] call fnc_Log;
 		};
 		call player_forceSave;
 	} else {

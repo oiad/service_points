@@ -39,7 +39,7 @@ diag_log text "Service Point: loading config...";
 // general settings
 _folder = "scripts\service\"; // folder where the service point scripts are saved, relative to the mission file
 if (isNil "z_calcCurrency") then {z_calcCurrency = compile preprocessFileLineNumbers (_folder + "z_at_calcCurrency.sqf")}; // Use portable version of z_calcCurrency if epoch version is not installed
-_servicePointClasses = ["Map_A_FuelStation_Feed", "Land_A_FuelStation_Feed", "FuelPump_DZ"]; // service point classes (can be house, vehicle and unit classes)
+_servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
@@ -183,24 +183,24 @@ while {true} do {
 			} else {
 				_role = assignedVehicleRole player;
 			};
-			if (((str _role) != (str _lastRole)) || (_vehicle != _lastVehicle)) then {
+			if (((str _role) != (str _lastRole)) || {_vehicle != _lastVehicle}) then {
 				call _fnc_removeActions;
 			};
 			_lastVehicle = _vehicle;
 			_lastRole = _role;
-			if (SP_refuel_action < 0 && _refuel_enable) then {
+			if ((SP_refuel_action < 0) && {_refuel_enable}) then {
 				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
 				_costs = _costs call _fnc_checkCosts;
 				_actionTitle = ["Refuel",_costs] call _fnc_actionTitle;
 				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
-			if (SP_repair_action < 0 && _repair_enable) then {
+			if ((SP_repair_action < 0) && {_repair_enable}) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
 				_costs = _costs call _fnc_checkCosts;
 				_actionTitle = ["Repair",_costs] call _fnc_actionTitle;
 				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
-			if ((count _role > 1) && (count SP_rearm_actions == 0) && _rearm_enable) then {
+			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable}) then {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
 				{
 					_weaponName = _x select 1;
@@ -211,7 +211,7 @@ while {true} do {
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];
 				} forEach _weapons;
 			};
-			if (!_messageShown && _message != "") then {
+			if (!_messageShown && {_message != ""}) then {
 				_messageShown = true;
 				_vehicle vehicleChat _message;
 			};

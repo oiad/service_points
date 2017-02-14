@@ -37,7 +37,7 @@ private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_
 diag_log text "Service Point: loading config...";
 
 // general settings
-_folder = "scripts\service\"; // folder where the service point scripts are saved, relative to the mission file
+_folder = "scripts\service_points\"; // folder where the service point scripts are saved, relative to the mission file
 if (isNil "z_calcCurrency") then {z_calcCurrency = compile preprocessFileLineNumbers (_folder + "z_at_calcCurrency.sqf")}; // Use portable version of z_calcCurrency if epoch version is not installed
 _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown

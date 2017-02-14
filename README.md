@@ -38,7 +38,7 @@ Major Changes:
 
 Installation Steps -
 
-1) In your \dayzinstallfolder\MPMissions\dayz_1.Chernarus folder (or similar), create a subfolder called "scripts/service_points" or use another name if a folder with other add-on scripts exists.
+1) In your \dayzinstallfolder\MPMissions\DayZ_Epoch_11.Chernarus folder (or similar), create a subfolder called "scripts/service_points" or use another name if a folder with other add-on scripts exists.
 
 2) Download this repo by clicking on the "Clone or Download" button and then click "Download ZIP" or click: https://github.com/oiad/service_points/archive/master.zip
 
@@ -49,7 +49,7 @@ Installation Steps -
 	if (!isDedicated) then {
 		// ... some other stuff ...
 		// add the next line somewhere in this block
-		execVM "scripts\service_points\service_point.sqf";
+		[] execVM "scripts\service_points\service_point.sqf";
 	};
 
 5) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.

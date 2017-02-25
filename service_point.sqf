@@ -6,8 +6,7 @@
 
 	This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 
 	Instead of pricing things like the original way, prices are now done on a "worth" similar to how coins are done. The price value of items are below.
-	If you are using coins, I would recommend using the _currencyModifier variable since coins typically are 10x the value of briefcase based currency (1 brief == 100,000 coins)
-
+	
 	1 silver = 1 worth
 	1 10oz silver = 10 worth
 	1 gold = 100 worth
@@ -30,7 +29,7 @@
 	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
 */
 
-private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_checkCosts","_fnc_getWeapons","_currencyModifier","_rearm_ignore","_cycleTime","_servicePoints","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName"];
+private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_getWeapons","_rearm_ignore","_cycleTime","_servicePoints","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName"];
 
 // ---------------- CONFIG START ----------------
 
@@ -45,8 +44,6 @@ _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (R
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
 _message = "Vehicle Service Point nearby"; // message to be shown when in range of a service point (set to "" to disable)
 _cycleTime = 5; // Time in sections for how often the action menu will be refreshed and how often it will search for a nearby fuel station (setting this too low can make a lot of lag)
-
-_currencyModifier = 10; // Multiplyer for single currency since it is typically 10x the value of default epoch currency.
 
 // refuel settings
 _refuel_enable = true; // enable or disable the refuel option
@@ -166,13 +163,6 @@ _fnc_getWeapons = {
 	_gWeapons
 };
 
-_fnc_checkCosts = {
-	private ["_checkCosts"];
-
-	_checkCosts = if (Z_singleCurrency && {typeName _this != "STRING"}) then {_this * _currencyModifier} else {_this};
-	_checkCosts
-};
-
 while {true} do {
 	_vehicle = vehicle player;
 	if (_vehicle != player) then {
@@ -190,13 +180,11 @@ while {true} do {
 			_lastRole = _role;
 			if ((SP_refuel_action < 0) && {_refuel_enable}) then {
 				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
-				_costs = _costs call _fnc_checkCosts;
 				_actionTitle = ["Refuel",_costs] call _fnc_actionTitle;
 				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
 			if ((SP_repair_action < 0) && {_repair_enable}) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
-				_costs = _costs call _fnc_checkCosts;
 				_actionTitle = ["Repair",_costs] call _fnc_actionTitle;
 				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
@@ -205,7 +193,6 @@ while {true} do {
 				{
 					_weaponName = _x select 1;
 					_costs = [_weaponName,_rearm_costs] call _fnc_getCostsWep;
-					_costs = _costs call _fnc_checkCosts;
 					_actionTitle = [format["Rearm %1",_weaponName],_costs] call _fnc_actionTitle;
 					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];

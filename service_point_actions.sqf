@@ -39,7 +39,7 @@ _moneyInfo = [false, [], [], [], 0];
 _wealth = player getVariable[Z_MoneyVariable,0];
 
 if (Z_SingleCurrency) then {
-	_enoughMoney = if (_wealth >= _amount) then {true} else {false};
+	_enoughMoney = (_wealth >= _amount);
 } else {
 	Z_Selling = false;
 	if (Z_AllowTakingMoneyFromVehicle) then {false call Z_checkCloseVehicle};

@@ -2,7 +2,7 @@
 	Vehicle Service Point by Axe Cop
 	Rewritten for single currency, gems, briefcase support and 1.0.6 epoch compatibility by salival
 	
-	Requires DayZ Epoch 1.0.6
+	Requires DayZ Epoch 1.0.6.1
 
 	This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 
 	Instead of pricing things like the original way, prices are now done on a "worth" similar to how coins are done. The price value of items are below.
@@ -33,11 +33,10 @@ private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_
 
 // ---------------- CONFIG START ----------------
 
-diag_log text "Service Point: loading config...";
+diag_log "Service Points: loading config...";
 
 // general settings
 _folder = "scripts\service_points\"; // folder where the service point scripts are saved, relative to the mission file
-if (isNil "z_calcCurrency") then {z_calcCurrency = compile preprocessFileLineNumbers (_folder + "z_at_calcCurrency.sqf")}; // Use portable version of z_calcCurrency if epoch version is not installed
 _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
@@ -68,9 +67,9 @@ _rearm_magazineCount = 2; // amount of magazines to be added to the vehicle weap
 _rearm_ignore = ["Horn","Laser Marker"]; // Array of weapon display names that are ignored in the rearm listing.
 
 /*
-_ream_costs is an array based on the AMMO type. I.e M240, MK19, PKM, PKT, M134 etc. 
-You can disable certain ammo types from being able to be rearmed by making the price "disabled" 
-example: ["M134","disabled"]
+	_ream_costs is an array based on the AMMO type. I.e M240, MK19, PKM, PKT, M134 etc. 
+	You can disable certain ammo types from being able to be rearmed by making the price "disabled" 
+	example: ["M134","disabled"]
 */
 
 _rearm_costs = [

@@ -1,12 +1,12 @@
 # Service Points
-Axe Cops service point script updated for 1.0.6 by salival
+Axe Cops service point script updated for 1.0.6+ by salival
 
 Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-vehicle-service-point-refuel-repair-rearm-updated-for-106/
 
 	(original github url: https://github.com/vos/dayz/tree/master/service_point)
 	(original install/discussion url: https://epochmod.com/forum/topic/3935-release-vehicle-service-point-refuel-repair-rearm-script/)
 	
-**** *REQUIRES DAYZ EPOCH 1.0.6* ****
+**** *REQUIRES DAYZ EPOCH 1.0.6.1* ****
 	
 Major Changes:
 

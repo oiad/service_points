@@ -35,6 +35,9 @@ Major Changes:
 	["Armored_SUV_PMC","disabled"] will make the specific vehicle be disabled for the specific action.
 
 	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
+	
+# Epoch 1.0.6.1
+* Please note, to keep things simple I have removed files/information pertaining to 1.0.6, onwards to the future of 1.0.6.1!
 
 Installation Steps -
 

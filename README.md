@@ -1,5 +1,5 @@
 # Service Points
-Axe Cops service point script updated for 1.0.6+ by salival
+Axe Cops service point script updated for 1.0.6.1 by salival
 
 Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-vehicle-service-point-refuel-repair-rearm-updated-for-106/
 
@@ -35,9 +35,8 @@ Major Changes:
 	["Armored_SUV_PMC","disabled"] will make the specific vehicle be disabled for the specific action.
 
 	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
-	
-# Epoch 1.0.6.1
-* Please note, to keep things simple I have removed files/information pertaining to 1.0.6, onwards to the future of 1.0.6.1!
+
+**[>> Download <<](https://github.com/oiad/service_points/archive/master.zip)**
 
 Installation Steps -
 

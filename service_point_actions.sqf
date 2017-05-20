@@ -1,5 +1,5 @@
 // Vehicle Service Point (Rearm) by Axe Cop
-// Rewritten for single currency, gems, briefcase support and 1.0.6 epoch compatibility by salival
+// Rewritten for single currency, gems, briefcase support and 1.0.6 epoch compatibility by salival - https://github.com/oiad/
 // Requires DayZ Epoch 1.0.6 for gem support.
 
 private ["_vehicle","_costs","_fuel","_magazineCount","_weapon","_type","_name","_weaponType","_weaponName","_turret","_magazines","_ammo","_textMissing","_pos","_message","_action","_partName","_damage","_selection","_strH","_disabled","_amount","_enoughMoney","_moneyInfo","_wealth","_success","_reason"];

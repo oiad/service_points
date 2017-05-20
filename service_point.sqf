@@ -1,6 +1,6 @@
 /*
 	Vehicle Service Point by Axe Cop
-	Rewritten for single currency, gems, briefcase support and 1.0.6 epoch compatibility by salival
+	Rewritten for single currency, gems, briefcase support and 1.0.6 epoch compatibility by salival - https://github.com/oiad/
 	
 	Requires DayZ Epoch 1.0.6.1
 

@@ -29,14 +29,13 @@
 	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
 */
 
-private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_getWeapons","_rearm_ignore","_cycleTime","_servicePoints","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName"];
+private ["_servicePointClasses","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_getWeapons","_rearm_ignore","_cycleTime","_servicePoints","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName"];
 
 // ---------------- CONFIG START ----------------
 
 diag_log "Service Points: loading config...";
 
 // general settings
-_folder = "scripts\service_points\"; // folder where the service point scripts are saved, relative to the mission file
 _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
@@ -65,7 +64,7 @@ _repair_costs = [
 _rearm_enable = true; // enable or disable the rearm option
 _rearm_defaultcost = 10000; // Default cost to rearm a weapon. (10000 worth == 1 briefcase)
 _rearm_magazineCount = 2; // amount of magazines to be added to the vehicle weapon
-_rearm_ignore = ["Horn","Laser Marker"]; // Array of weapon display names that are ignored in the rearm listing.
+_rearm_ignore = [localize "str_dn_horn",localize "str_dn_laser_designator"]; // Array of weapon display names that are ignored in the rearm listing.
 
 /*
 	_ream_costs is an array based on the AMMO type. I.e M240, MK19, PKM, PKT, M134 etc. 
@@ -74,10 +73,10 @@ _rearm_ignore = ["Horn","Laser Marker"]; // Array of weapon display names that a
 */
 
 _rearm_costs = [
-	["Flares",2000],
-	["M240",5000],
-	["PKM",5000],
-	["PKT",5000]
+	[localize "str_dn_flarelauncher",2000], // Flares
+	[localize "str_dn_m240",5000], // M240
+	[localize "str_dn_pk",5000], // PKM
+	[localize "str_dn_pkt",5000] // PKT
 ];
 
 // ---------------- CONFIG END ----------------
@@ -181,12 +180,12 @@ while {true} do {
 			if ((SP_refuel_action < 0) && {_refuel_enable}) then {
 				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
 				_actionTitle = ["Refuel",_costs] call _fnc_actionTitle;
-				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
+				SP_refuel_action = _vehicle addAction [_actionTitle,"scripts\service_points\service_point_actions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
 			if ((SP_repair_action < 0) && {_repair_enable}) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
 				_actionTitle = ["Repair",_costs] call _fnc_actionTitle;
-				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
+				SP_repair_action = _vehicle addAction [_actionTitle,"scripts\service_points\service_point_actions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
 			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable}) then {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
@@ -194,7 +193,7 @@ while {true} do {
 					_weaponName = _x select 1;
 					_costs = [_weaponName,_rearm_costs] call _fnc_getCostsWep;
 					_actionTitle = [format["Rearm %1",_weaponName],_costs] call _fnc_actionTitle;
-					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
+					SP_rearm_action = _vehicle addAction [_actionTitle,"scripts\service_points\service_point_actions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];
 				} forEach _weapons;
 			};

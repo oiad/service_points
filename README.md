@@ -46,13 +46,15 @@ Installation Steps -
 
 3) Place the files that you've downloaded below into the "scripts/service_points" folder
 
-4) Add this to your init.sqf in the "if (!isDedicated) then { PUT HERE SOMEWHERE (at the end is ok) }" block (so it will only be started on your client and not the server):
-
-	if (!isDedicated) then {
-		// ... some other stuff ...
-		// add the next line somewhere in this block
-		[] execVM "scripts\service_points\service_point.sqf";
-	};
+4) Find this line in your <code>init.sqf</code>:
+	```sqf
+	execFSM "\z\addons\dayz_code\system\player_monitor.fsm";
+	```
+	
+	Add this line directly after it:
+	```sqf
+	[] execVM "scripts\service_points\service_point.sqf";
+	```
 
 5) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.
 	

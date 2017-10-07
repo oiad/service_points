@@ -57,7 +57,20 @@ Installation Steps -
 	```
 
 5) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.
-	
-6) You're done! enjoy the new script! :)
 
+# Battleye filter install.
+
+1. In your config\<yourServerName>\Battleye\scripts.txt around line 32: <code>5 setDamage</code> add this to the end of it:
+
+	```sqf
+	
+	!="if (_allRepaired) then {\n_vehicle setDamage 0;"
+	```
+	
+	So it will then look like this for example:
+
+	```sqf
+	5 setDamage <CUT> !="if (_allRepaired) then {\n_vehicle setDamage 0;"
+	```
+	
 Credits - Axe Cop, salival

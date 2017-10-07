@@ -72,5 +72,18 @@ Installation Steps -
 	```sqf
 	5 setDamage <CUT> !="if (_allRepaired) then {\n_vehicle setDamage 0;"
 	```
+
+2. In your config\<yourServerName>\Battleye\scripts.txt around line 51: <code>5 toString</code> add this to the end of it:
+
+	```sqf
+	
+	!="_partName set [2,20];\n_partName = toString _partName;"
+	```
+	
+	So it will then look like this for example:
+
+	```sqf
+	5 toString <CUT> !="_partName set [2,20];\n_partName = toString _partName;"
+	```
 	
 Credits - Axe Cop, salival

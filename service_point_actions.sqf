@@ -26,10 +26,12 @@ if (_action == "rearm") then {
 };
 
 if (typeName _amount == "STRING") then {
-	if ((_amount == "disabled") && {_action == "rearm"}) then {_reason = format["%1 is unable to be rearmed.",_weaponName]; _disabled = true};
-	if ((_amount == "disabled") && {_action == "repair"}) then {_reason = format["%1 is unable to be repaired.",_name]; _disabled = true};
-	if ((_amount == "disabled") && {_action == "refuel"}) then {_reason = format["%1 is unable to be refueled.",_name]; _disabled = true};
-	if (_amount == "free") then {_amount = 0};
+	if (_amount == localize "str_temp_param_disabled") then {
+		if (_action == "rearm") then {_reason = format["%1 is unable to be rearmed.",_weaponName]; _disabled = true};
+		if (_action == "repair") then {_reason = format["%1 is unable to be repaired.",_name]; _disabled = true};
+		if (_action == "refuel") then {_reason = format["%1 is unable to be refueled.",_name]; _disabled = true};
+	};
+	if (_amount == localize "strwffree") then {_amount = 0};
 };
 
 if (_disabled) exitWith {[_reason,1] call dayz_rollingMessages};

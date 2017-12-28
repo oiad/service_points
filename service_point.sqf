@@ -36,7 +36,7 @@ private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_
 diag_log "Service Points: loading config...";
 
 // general settings
-_folder = "scripts\service\"; // folder where the service point scripts are saved, relative to the mission file
+_folder = "scripts\service_points\"; // folder where the service point scripts are saved, relative to the mission file
 _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)

@@ -36,7 +36,7 @@ private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_
 diag_log "Service Points: loading config...";
 
 // general settings
-_folder = "scripts\service_points\"; // folder where the service point scripts are saved, relative to the mission file
+_folder = "scripts\servicePoints\"; // folder where the service point scripts are saved, relative to the mission file
 _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
@@ -184,12 +184,12 @@ while {true} do {
 			if ((SP_refuel_action < 0) && {_refuel_enable}) then {
 				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf8",_costs] call _fnc_actionTitle;
-				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
+				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
 			if ((SP_repair_action < 0) && {_repair_enable}) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf1",_costs] call _fnc_actionTitle;
-				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
+				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
 			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable}) then {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
@@ -197,7 +197,7 @@ while {true} do {
 					_weaponName = _x select 1;
 					_costs = [_weaponName,_rearm_costs] call _fnc_getCostsWep;
 					_actionTitle = [format["%1 %2",localize "config_depot.sqf5",_weaponName],_costs] call _fnc_actionTitle;
-					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "service_point_actions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
+					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];
 				} forEach _weapons;
 			};

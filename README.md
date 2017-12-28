@@ -53,10 +53,10 @@ Installation Steps -
 	
 	Add this line directly after it:
 	```sqf
-	[] execVM "scripts\service_points\service_point.sqf";
+	execVM "scripts\servicePoints\init.sqf";
 	```
 
-5) Edit "scripts/service_points/service_point.sqf" and customize it to your preference.
+5) Edit "scripts/servicePoints\init.sqf" and customize it to your preference.
 
 # Battleye filter install.
 

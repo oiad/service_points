@@ -43,8 +43,8 @@ _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (R
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
 _message = "Vehicle Service Point nearby"; // message to be shown when in range of a service point (set to "" to disable)
 _cycleTime = 5; // Time in sections for how often the action menu will be refreshed and how often it will search for a nearby fuel station (setting this too low can make a lot of lag)
-_disabledText = localize "str_temp_param_disabled";
-_freeText = localize "strwffree";
+_disabledText = (localize "str_temp_param_disabled");
+_freeText = (localize "strwffree");
 
 // refuel settings
 _refuel_enable = true; // enable or disable the refuel option
@@ -67,7 +67,7 @@ _repair_costs = [
 _rearm_enable = true; // enable or disable the rearm option
 _rearm_defaultcost = 10000; // Default cost to rearm a weapon. (10000 worth == 1 briefcase)
 _rearm_magazineCount = 2; // amount of magazines to be added to the vehicle weapon
-_rearm_ignore = [localize "str_dn_horn",localize "str_dn_laser_designator"]; // Array of weapon display names that are ignored in the rearm listing.
+_rearm_ignore = [(localize "str_dn_horn"),(localize "str_dn_laser_designator")]; // Array of weapon display names that are ignored in the rearm listing.
 
 /*
 	_ream_costs is an array based on the AMMO type. I.e M240, MK19, PKM, PKT, M134 etc. 
@@ -76,11 +76,12 @@ _rearm_ignore = [localize "str_dn_horn",localize "str_dn_laser_designator"]; // 
 */
 
 _rearm_costs = [
-	[localize "str_mn_40rnd_grad",_disabledText], // BM-21 Grad is disabled (ammo is broken)
-	[localize "str_dn_flarelauncher",2000], // Flares
-	[localize "str_dn_m240",5000], // M240
-	[localize "str_dn_pk",5000], // PKM
-	[localize "str_dn_pkt",5000] // PKT
+	[(localize "str_mn_40rnd_grad"),_disabledText], // BM-21 Grad is disabled (ammo is broken)
+	[(localize "str_dn_flarelauncher"),2000], // Flares
+	[(localize "str_dn_m240"),5000], // M240
+	[(localize "str_dn_pk"),5000], // PKM
+	[(localize "str_dn_pkt"),5000], // PKT
+	[(localize "str_sn_m134")],5000] // M134
 ];
 
 // ---------------- CONFIG END ----------------

@@ -1,12 +1,12 @@
 # Service Points
-Axe Cops service point script updated for 1.0.6.1 by salival
+Axe Cops service point script updated for 1.0.6.2 by salival
 
 Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-vehicle-service-point-refuel-repair-rearm-updated-for-106/
 
 	(original github url: https://github.com/vos/dayz/tree/master/service_point)
 	(original install/discussion url: https://epochmod.com/forum/topic/3935-release-vehicle-service-point-refuel-repair-rearm-script/)
 	
-**** *REQUIRES DAYZ EPOCH 1.0.6.1* ****
+**** *REQUIRES DAYZ EPOCH 1.0.6.2* ****
 	
 Major Changes:
 
@@ -27,12 +27,12 @@ Major Changes:
 
 	All 3 sections can either be made free, disabled or a specifc price with the following examples:
 
-	["Air","free"] will make the vehicle config class of "Air" free for the specific action.
-	["Air","disabled"] will make the vehicle config class of "Air" disabled for the specific action.
+	["Air",_freeText] will make the vehicle config class of "Air" free for the specific action.
+	["Air",_disabledText] will make the vehicle config class of "Air" disabled for the specific action.
 	["Air",2000] will make the vehicle config class of "Air" have a worth of 2000 for the specific action.
 	["Armored_SUV_PMC",2000] will make the specific vehicle have a worth of 2000 for the specific action.
-	["Armored_SUV_PMC","free"] will make the specific vehicle be free for the specific action.
-	["Armored_SUV_PMC","disabled"] will make the specific vehicle be disabled for the specific action.
+	["Armored_SUV_PMC",_freeText] will make the specific vehicle be free for the specific action.
+	["Armored_SUV_PMC",_disabledText] will make the specific vehicle be disabled for the specific action.
 
 	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
 
@@ -40,13 +40,13 @@ Major Changes:
 
 Installation Steps -
 
-1) In your \dayzinstallfolder\MPMissions\DayZ_Epoch_11.Chernarus folder (or similar), create a subfolder called "scripts/service_points" or use another name if a folder with other add-on scripts exists.
+1. In your \dayzinstallfolder\MPMissions\DayZ_Epoch_11.Chernarus folder (or similar), create a subfolder called "scripts/service_points" or use another name if a folder with other add-on scripts exists.
 
-2) Download this repo by clicking on the "Clone or Download" button and then click "Download ZIP" or click: https://github.com/oiad/service_points/archive/master.zip
+2. Download this repo by clicking on the "Clone or Download" button and then click "Download ZIP" or click: https://github.com/oiad/service_points/archive/master.zip
 
-3) Place the files that you've downloaded below into the "scripts/service_points" folder
+3. Place the files that you've downloaded below into the "scripts/service_points" folder
 
-4) Find this line in your <code>init.sqf</code>:
+4. Find this line in your <code>init.sqf</code>:
 	```sqf
 	execFSM "\z\addons\dayz_code\system\player_monitor.fsm";
 	```
@@ -56,7 +56,9 @@ Installation Steps -
 	execVM "scripts\servicePoints\init.sqf";
 	```
 
-5) Edit "scripts/servicePoints\init.sqf" and customize it to your preference.
+5. Edit "scripts/servicePoints\init.sqf" and customize it to your preference.
+
+6. Copy the supplied <code>stringTable.xml</code> to your mission folder, it is a community based localization file and contains translations for major community mods including this one. See https://github.com/oiad/communityLocalizations for more information.
 
 # Battleye filter install.
 

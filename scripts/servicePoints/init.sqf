@@ -2,7 +2,7 @@
 	Vehicle Service Point by Axe Cop
 	Rewritten for single currency, gems, briefcase support and 1.0.6 epoch compatibility by salival - https://github.com/oiad/
 	
-	Requires DayZ Epoch 1.0.6.1
+	Requires DayZ Epoch 1.0.6.2
 
 	This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 
 	Instead of pricing things like the original way, prices are now done on a "worth" similar to how coins are done. The price value of items are below.
@@ -41,7 +41,7 @@ _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","Fuel
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
-_message = "Vehicle Service Point nearby"; // message to be shown when in range of a service point (set to "" to disable)
+_message = localize "STR_SP_MESSAGE"; // This is translated from your stringtable.xml in your mission folder root. Set to "" to disable
 _cycleTime = 5; // Time in sections for how often the action menu will be refreshed and how often it will search for a nearby fuel station (setting this too low can make a lot of lag)
 _disabledText = (localize "str_temp_param_disabled");
 _freeText = (localize "strwffree");

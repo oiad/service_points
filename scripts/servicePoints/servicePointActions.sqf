@@ -118,9 +118,6 @@ if (_enoughMoney) then {
 			_magazines = getArray (configFile >> "CfgWeapons" >> _weaponType >> "magazines");
 			_ammo = _magazines select 0;
 
-			_magazines = _vehicle magazinesTurret _turret;
-			{_vehicle removeMagazineTurret [_ammo,_turret];} forEach _magazines;
-
 			for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 
 			[format["%1 of %2 Rearmed",_weaponName,_name],1] call dayz_rollingMessages;

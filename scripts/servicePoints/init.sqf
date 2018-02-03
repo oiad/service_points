@@ -81,7 +81,11 @@ _rearm_costs = [
 	[(localize "str_dn_m240"),5000], // M240
 	[(localize "str_dn_pk"),5000], // PKM
 	[(localize "str_dn_pkt"),5000], // PKT
-	[(localize "str_sn_m134"),5000] // M134
+	[(localize "str_sn_m134"),5000], // M134
+	[(localize "str_dn_m2_mg"),5000], // M2
+	[(localize "str_dn_mk19"),5000], // MK19
+	[(localize "str_dn_ags30"),5000], // AGS-30
+	[(localize "str_dn_dshkm"),5000] // DSHKM
 ];
 
 // ---------------- CONFIG END ----------------

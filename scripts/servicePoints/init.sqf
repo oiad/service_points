@@ -31,8 +31,6 @@
 
 private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_getWeapons","_rearm_ignore","_cycleTime","_servicePoints","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName","_disabledText","_freeText"];
 
-// ---------------- CONFIG START ----------------
-
 diag_log "Service Points: loading config...";
 
 // general settings
@@ -41,7 +39,7 @@ _servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","Fuel
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
-_message = localize "STR_SP_MESSAGE"; // This is translated from your stringtable.xml in your mission folder root. Set to "" to disable
+_message = localize "STR_CL_SP_MESSAGE"; // This is translated from your stringtable.xml in your mission folder root. Set to "" to disable
 _cycleTime = 5; // Time in sections for how often the action menu will be refreshed and how often it will search for a nearby fuel station (setting this too low can make a lot of lag)
 _disabledText = (localize "str_temp_param_disabled");
 _freeText = (localize "strwffree");
@@ -87,8 +85,6 @@ _rearm_costs = [
 	[(localize "str_dn_ags30"),5000], // AGS-30
 	[(localize "str_dn_dshkm"),5000] // DSHKM
 ];
-
-// ---------------- CONFIG END ----------------
 
 _lastVehicle = objNull;
 _lastRole = [];

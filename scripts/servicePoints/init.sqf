@@ -117,7 +117,34 @@ _rearm_costs = [
 	[(localize "str_ep1_dn_yakb"),5000], // Yak-B
 	[(localize "str_mn_at2_mi24d"),5000], // Falanga 3M11
 	[(localize "str_mn_at5_bmp2"),5000], // Konkurs 9M113
-	[(localize "str_mn_stinger"),5000] // FIM-92F Stinger
+	[(localize "str_mn_stinger"),5000], // FIM-92F Stinger
+	[(localize "str_mn_12rnd_mlrs"),5000], // MLRS
+	[(localize "str_baf_baf_l2a10"),5000], // L111A1
+	[(localize "STR_DN_D10_CCP"),5000], // D-10
+	[(localize "str_dn_tow"),5000], // M220 TOW
+	[(localize "str_dn_zu23"),5000], // ZU-23
+	[(localize "str_dn_kpvt"),5000], // KPVT
+	[(localize "str_dn_m3p"),5000], // M3P
+	[(localize "str_dn_spg9"),5000], // SPG-9
+	[(localize "str_dn_gau8"),5000], // GAU-8
+	[(localize "str_dn_maverick"),5000], // AGM-65 Maverick
+	[(localize "str_dn_gbu12"),5000], // GBU-12
+	[(localize "str_dn_gau12"),5000], // GAU-12
+	[(localize "STR_DN_KH29_CCP"),5000], // Kh-29L
+	[(localize "str_dn_r73"),5000], // R-73
+	[(localize "str_mn_fab250"),5000], // FAB-250
+	[(localize "str_dn_gsh301"),5000], // GSh-301
+	[(localize "str_mn_23mm_gsh23l"),5000], // GSh-23L
+	[(localize "str_sn_grenade"),5000], // Grenade
+	[(localize "str_mn_at9_mi24p"),5000], // Ataka-V 9M120
+	[(localize "str_mn_at6_mi24v"),5000], // Shturm 9K114
+
+	["SGMT",5000], // SGMT no localization available
+	["M68",5000], // M68 no localization available
+	["GAU-22",5000], // GAU-22 no localization available
+	["GSh-30",5000], // GSh-30 no localization available
+	["M60",5000], // M60 no localization available
+	["GSh-30K",5000] // GSh-30K no localization available
 ];
 
 _lastVehicle = objNull;

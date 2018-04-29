@@ -41,8 +41,8 @@ _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (R
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
 _message = localize "STR_CL_SP_MESSAGE"; // This is translated from your stringtable.xml in your mission folder root. Set to "" to disable
 _cycleTime = 5; // Time in sections for how often the action menu will be refreshed and how often it will search for a nearby fuel station (setting this too low can make a lot of lag)
-_disabledText = (localize "str_temp_param_disabled");
-_freeText = (localize "strwffree");
+_disabledText = (localize "str_temp_param_disabled"); // Disabled text to show up when items are disabled, DO NOT CHANGE.
+_freeText = (localize "strwffree"); // Free text to show up when items are free, DO NOT CHANGE.
 
 // refuel settings
 _refuel_enable = true; // enable or disable the refuel option
@@ -76,14 +76,48 @@ _rearm_ignore = [(localize "str_dn_horn"),(localize "str_dn_laser_designator")];
 _rearm_costs = [
 	[(localize "str_mn_40rnd_grad"),_disabledText], // BM-21 Grad is disabled (ammo is broken)
 	[(localize "str_dn_flarelauncher"),2000], // Flares
-	[(localize "str_dn_m240"),5000], // M240
+	[(localize "str_ep1_dn_smokelauncher"),2000], // Smokes
 	[(localize "str_dn_pk"),5000], // PKM
 	[(localize "str_dn_pkt"),5000], // PKT
 	[(localize "str_sn_m134"),5000], // M134
-	[(localize "str_dn_m2_mg"),5000], // M2
-	[(localize "str_dn_mk19"),5000], // MK19
 	[(localize "str_dn_ags30"),5000], // AGS-30
-	[(localize "str_dn_dshkm"),5000] // DSHKM
+	[(localize "str_dn_dshkm"),5000], // DSHKM
+	[(localize "str_DN_VIKHR_CCP"),5000], // Vikhr 9A4172
+	[(localize "str_baf_baf_l94a10"),5000], // L94A1 Chain Gun
+	[(localize "str_baf_crv70"),5000], // CRV7
+	[(localize "str_baf_ctws0"),5000], // CTWS
+	[(localize "str_baf_m621_manual0"),5000], // M621
+	[(localize "str_dn_2a38m"),5000], // 2A38M Gun
+	[(localize "str_dn_2a42"),5000], // 2A42
+	[(localize "str_dn_2a46m"),5000], // 2A46M Cannon
+	[(localize "str_dn_2a46m_rocket"),5000], // 9M119M Refleks rocket
+	[(localize "str_dn_2a70"),5000], // 2A70 100mm
+	[(localize "str_dn_2a70_rocket"),5000], // 9M117M1 Arkan
+	[(localize "str_dn_2a72"),5000], // 2A72 30mm
+	[(localize "str_dn_80mmlauncher_burst"),5000], // S-8
+	[(localize "str_dn_9m311laucher"),5000], // Tunguska 9M311
+	[(localize "str_dn_ags17"),5000], // AGS-17
+	[(localize "str_dn_d81"),5000], // D-81
+	[(localize "str_dn_dt_veh"),5000], // DT
+	[(localize "str_dn_hellfire"),5000], // AGM-114 Hellfire
+	[(localize "str_dn_kord"),5000], // KORD
+	[(localize "str_dn_m197"),5000], // M197
+	[(localize "str_dn_m240"),5000], // M240
+	[(localize "str_dn_m242"),5000], // M242
+	[(localize "str_dn_m256"),5000], // M256
+	[(localize "str_dn_sidewinderlaucher"),5000], // AIM-9L Sidewinder
+	[(localize "str_dn_zis_s_53"),5000], // ZiS-S-53
+	[(localize "str_ep1_dn_57mmlauncher"),5000], // S-5
+	[(localize "str_ep1_dn_azp85"),5000], // AZP-23
+	[(localize "str_ep1_dn_ffarlauncher"),5000], // Hydra
+	[(localize "str_ep1_dn_m2"),5000], // M2 Machinegun
+	[(localize "str_ep1_dn_m230"),5000], // M230
+	[(localize "str_ep1_dn_m32_ep1"),5000], // M32
+	[(localize "str_ep1_dn_mk19"),5000], // Mk19
+	[(localize "str_ep1_dn_yakb"),5000], // Yak-B
+	[(localize "str_mn_at2_mi24d"),5000], // Falanga 3M11
+	[(localize "str_mn_at5_bmp2"),5000], // Konkurs 9M113
+	[(localize "str_mn_stinger"),5000] // FIM-92F Stinger
 ];
 
 _lastVehicle = objNull;

@@ -23,6 +23,7 @@ if (_action == "rearm") then {
 	
 	_weaponType = _weapon select 0;
 	_weaponName = _weapon select 1;
+	_turret = _weapon select 2;
 };
 
 if (typeName _amount == "STRING") then {
@@ -60,9 +61,8 @@ if (_enoughMoney) then {
 			player setVariable[Z_MoneyVariable,(_wealth - _amount),true];
 		};
 		[player,50,true,getPosATL player] spawn player_alertZombies;
+		_vehicle engineOn false;
 		if (_action == "refuel") then {
-			[player,50,true,getPosATL player] spawn player_alertZombies;
-			_vehicle engineOn false;
 			[format[localize "STR_CL_SP_REFUELING",_name],1] call dayz_rollingMessages;
 			[_vehicle,"refuel",0,false] call dayz_zombieSpeak;
 
@@ -78,7 +78,6 @@ if (_enoughMoney) then {
 			};
 		};
 		if (_action == "repair") then {
-			_vehicle engineOn false;
 			[_vehicle,"repair",0,false] call dayz_zombieSpeak;
 
 			_hitpoints = _vehicle call vehicle_getHitpoints;
@@ -114,7 +113,6 @@ if (_enoughMoney) then {
 		};
 
 		if (_action == "rearm") then {
-			_turret = _weapon select 2;
 			_magazines = getArray (configFile >> "CfgWeapons" >> _weaponType >> "magazines");
 			_ammo = _magazines select 0;
 

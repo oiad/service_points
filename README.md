@@ -50,7 +50,7 @@ Installation Steps -
 	```sqf
 	execFSM "\z\addons\dayz_code\system\player_monitor.fsm";
 	```
-	
+
 	Add this line directly after it:
 	```sqf
 	execVM "scripts\servicePoints\init.sqf";
@@ -64,30 +64,29 @@ Installation Steps -
 
 # Battleye filter install.
 
-1. In your config\<yourServerName>\Battleye\scripts.txt around line 32: <code>5 setDamage</code> add this to the end of it:
+1. In your config\<yourServerName>\Battleye\scripts.txt around line 2: <code>5 addAction</code> add this to the end of it:
 
 	```sqf
-	
+	!"_vehicle addAction [_actionTitle"
+	```
+
+	So it will then look like this for example:
+
+	```sqf
+	5 addAction <CUT> !"_vehicle addAction [_actionTitle"
+	```
+
+2. In your config\<yourServerName>\Battleye\scripts.txt around line 52: <code>5 setDamage</code> add this to the end of it:
+
+	```sqf
+
 	!="if (_allRepaired) then {\n_vehicle setDamage 0;"
 	```
-	
+
 	So it will then look like this for example:
 
 	```sqf
 	5 setDamage <CUT> !="if (_allRepaired) then {\n_vehicle setDamage 0;"
 	```
 
-2. In your config\<yourServerName>\Battleye\scripts.txt around line 51: <code>5 toString</code> add this to the end of it:
-
-	```sqf
-	
-	!="_partName set [2,20];\n_partName = toString _partName;"
-	```
-	
-	So it will then look like this for example:
-
-	```sqf
-	5 toString <CUT> !="_partName set [2,20];\n_partName = toString _partName;"
-	```
-	
 Credits - Axe Cop, salival

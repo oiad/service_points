@@ -64,7 +64,7 @@ _repair_costs = [
 // rearm settings
 _rearm_enable = true; // enable or disable the rearm option
 _rearm_defaultcost = 10000; // Default cost to rearm a weapon. (10000 worth == 1 briefcase)
-_rearm_magazineCount = 1; // amount of magazines to be added to the vehicle weapon
+_rearm_magazineCount = 2; // amount of magazines to be added to the vehicle weapon
 _rearm_ignore = [(localize "str_dn_horn"),(localize "str_dn_laser_designator")]; // Array of weapon display names that are ignored in the rearm listing.
 
 /*

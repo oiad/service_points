@@ -74,77 +74,94 @@ _rearm_ignore = [(localize "str_dn_horn"),(localize "str_dn_laser_designator")];
 */
 
 _rearm_costs = [
-	[(localize "str_mn_40rnd_grad"),_disabledText], // BM-21 Grad is disabled (ammo is broken)
-	[(localize "str_dn_flarelauncher"),2000], // Flares
-	[(localize "str_ep1_dn_smokelauncher"),2000], // Smokes
-	[(localize "str_dn_pk"),5000], // PKM
-	[(localize "str_dn_pkt"),5000], // PKT
-	[(localize "str_sn_m134"),5000], // M134
-	[(localize "str_dn_ags30"),5000], // AGS-30
-	[(localize "str_dn_dshkm"),5000], // DSHKM
-	[(localize "str_DN_VIKHR_CCP"),5000], // Vikhr 9A4172
-	[(localize "str_baf_baf_l94a10"),5000], // L94A1 Chain Gun
-	[(localize "str_baf_crv70"),5000], // CRV7
-	[(localize "str_baf_ctws0"),5000], // CTWS
-	[(localize "str_baf_m621_manual0"),5000], // M621
-	[(localize "str_dn_2a38m"),5000], // 2A38M Gun
-	[(localize "str_dn_2a42"),5000], // 2A42
-	[(localize "str_dn_2a46m"),5000], // 2A46M Cannon
-	[(localize "str_dn_2a46m_rocket"),5000], // 9M119M Refleks rocket
-	[(localize "str_dn_2a70"),5000], // 2A70 100mm
-	[(localize "str_dn_2a70_rocket"),5000], // 9M117M1 Arkan
-	[(localize "str_dn_2a72"),5000], // 2A72 30mm
-	[(localize "str_dn_80mmlauncher_burst"),5000], // S-8
-	[(localize "str_dn_9m311laucher"),5000], // Tunguska 9M311
-	[(localize "str_dn_ags17"),5000], // AGS-17
-	[(localize "str_dn_d81"),5000], // D-81
-	[(localize "str_dn_dt_veh"),5000], // DT
-	[(localize "str_dn_hellfire"),5000], // AGM-114 Hellfire
-	[(localize "str_dn_kord"),5000], // KORD
-	[(localize "str_dn_m197"),5000], // M197
-	[(localize "str_dn_m240"),5000], // M240
-	[(localize "str_dn_m242"),5000], // M242
-	[(localize "str_dn_m256"),5000], // M256
-	[(localize "str_dn_sidewinderlaucher"),5000], // AIM-9L Sidewinder
-	[(localize "str_dn_zis_s_53"),5000], // ZiS-S-53
-	[(localize "str_ep1_dn_57mmlauncher"),5000], // S-5
-	[(localize "str_ep1_dn_azp85"),5000], // AZP-23
-	[(localize "str_ep1_dn_ffarlauncher"),5000], // Hydra
-	[(localize "str_ep1_dn_m2"),5000], // M2 Machinegun
-	[(localize "str_ep1_dn_m230"),5000], // M230
-	[(localize "str_ep1_dn_m32_ep1"),5000], // M32
-	[(localize "str_ep1_dn_mk19"),5000], // Mk19
-	[(localize "str_ep1_dn_yakb"),5000], // Yak-B
-	[(localize "str_mn_at2_mi24d"),5000], // Falanga 3M11
-	[(localize "str_mn_at5_bmp2"),5000], // Konkurs 9M113
-	[(localize "str_mn_stinger"),5000], // FIM-92F Stinger
-	[(localize "str_mn_12rnd_mlrs"),5000], // MLRS
-	[(localize "str_baf_baf_l2a10"),5000], // L111A1
-	[(localize "STR_DN_D10_CCP"),5000], // D-10
-	[(localize "str_dn_tow"),5000], // M220 TOW
-	[(localize "str_dn_zu23"),5000], // ZU-23
-	[(localize "str_dn_kpvt"),5000], // KPVT
-	[(localize "str_dn_m3p"),5000], // M3P
-	[(localize "str_dn_spg9"),5000], // SPG-9
-	[(localize "str_dn_gau8"),5000], // GAU-8
-	[(localize "str_dn_maverick"),5000], // AGM-65 Maverick
-	[(localize "str_dn_gbu12"),5000], // GBU-12
-	[(localize "str_dn_gau12"),5000], // GAU-12
-	[(localize "STR_DN_KH29_CCP"),5000], // Kh-29L
-	[(localize "str_dn_r73"),5000], // R-73
-	[(localize "str_mn_fab250"),5000], // FAB-250
-	[(localize "str_dn_gsh301"),5000], // GSh-301
-	[(localize "str_mn_23mm_gsh23l"),5000], // GSh-23L
-	[(localize "str_sn_grenade"),5000], // Grenade
-	[(localize "str_mn_at9_mi24p"),5000], // Ataka-V 9M120
-	[(localize "str_mn_at6_mi24v"),5000], // Shturm 9K114
-
-	["SGMT",5000], // SGMT no localization available
-	["M68",5000], // M68 no localization available
-	["GAU-22",5000], // GAU-22 no localization available
-	["GSh-30",5000], // GSh-30 no localization available
+	["GRAD",500000], // BM-21 Grad (ammo fixed?)
+	["MLRS",500000], // MLRS
+	["FlareLauncher",500], // Flares
+	["SmokeLauncher",500], // Smokes
+	["2A46M",250000], // 2A46M Cannon T-90
+	["2A70",200000], // 2A70 100mm BMP3
+	["D10",150000], // D-10 T-55
+	["ZiS_S_53",100000], // ZiS-S-53 T-34
+	["D81",200000], // D-81 T-72
+	["M68",150000], // M68 MGS
+	["M256",200000], // M256 M1Abrams
+	["GSh301",50000], // GSh-301
+	["GSh302",100000], // GSh-301
+	["GSh23L",50000], // GSh-23L
+	["GAU8",150000], // GAU-8
+	["GAU12",50000], // GAU-12
+	["GAU22",50000], // GAU-22 no localization available
 	["M60",5000], // M60 no localization available
-	["GSh-30K",5000] // GSh-30K no localization available
+	["2A38M",50000], // 2A38M Gun
+	["2A42",50000], // 2A42
+	["2A72",50000], // 2A72 30mm
+	["M621",50000], // M621
+	["CTWS",50000], // CTWS
+	["M230",50000], // M230
+	["M197",50000], // M197
+	["M242",50000], // M242
+	["2A14",5000], // AZP-23 (40rnd)
+	["AZP85",20000], // AZP-23
+	["YakB",10000], // Yak-B
+	["M134",10000], // M134
+	["KORD",5000], // KORD
+	["DSHKM",5000], // DSHKM
+	["M3P",15000], // M3P
+	["M2",5000], // M2 Machinegun
+	["KPVT",50000], // KPVT
+	["AGS17",10000], // AGS-17
+	["AGS30",5000], // AGS-30
+	["M32_heli",5000], // M32
+	["MK19",5000], // Mk19
+	["BAF_L94A1",10000], // L94A1 Chain Gun
+	["SGMT",5000], // SGMT no localization available
+	["DT_veh",5000], // DT
+	["PKT_veh",5000], // PKM
+	["PKT",5000], // PKT
+	["M240_veh",5000], // M240
+	["2A70Rocket",150000], // 9M117M1 Arkan
+	["2A46MRocket",150000], // 9M119M Refleks rocket
+	["S8Launcher",100000], // S-8
+	["80mmLauncher",50000], // S-8
+	["57mmLauncher_128",400000], // S-5
+	["57mmLauncher_64",200000], // S-5
+	["57mmLauncher",500000], // S-5
+	["FFARLauncher_14",50000], // Hydra
+	["FFARLauncher",100000], // Hydra
+	["VikhrLauncher",500000], // Vikhr 9A121
+	["AT9Launcher",450000], // Ataka-V 9M120
+	["AT6Launcher",350000], // Shturm 9K114
+	["AT5Launcher",250000], // Konkurs 9M113
+	["AT2Launcher",150000], // Falanga 3M11
+	["CRV7_PG",500000], // CRV7
+	["HellfireLauncher",500000], // AGM-114 Hellfire
+	["TOWLauncherSingle",350000], // M220 TOW
+	["TOWLauncher",150000], // M220 TOW
+	["MaverickLauncher",500000], // AGM-65 Maverick
+	["Ch29Launcher_Su34",500000], // Kh-29L
+	["Ch29Launcher",400000], // Kh-29L
+	["SidewinderLaucher_AH64",700000], // AIM-9L Sidewinder
+	["SidewinderLaucher_AH1Z",300000], // AIM-9L Sidewinder
+	["SidewinderLaucher",500000], // AIM-9L Sidewinder
+	["R73Launcher_2",300000], // R-73
+	["R73Launcher",500000], // R-73
+	["9M311Laucher",500000], // Tunguska 9M311
+	["StingerLauncher_twice",300000], // FIM-92F Stinger
+	["Igla_twice",300000], // Igla
+	["D30",300000], // D-30
+	["M119",300000], // M119
+	["SPG9",1000], // SPG-9
+	["BombLauncherF35",15000], // GBU-12
+	["Mk82_BombLauncher",15000], // GBU-12
+	["bombLauncher",15000], // GBU-12
+	["AirBombLauncher",7500], // FAB-250
+	["HeliBombLauncher",2500], // FAB-250
+	["CamelGrenades",2000], // Grenade
+
+	["MissileLauncher",500000],
+	["RocketPods",100000],
+	["CannonCore",50000],
+	["Mgun",5000]
 ];
 
 _lastVehicle = objNull;
@@ -190,7 +207,7 @@ _fnc_getCostsWep = {
 	_returnCostWep = _rearm_defaultcost;
 	{
 		_typeName = _x select 0;
-		if (_weapon == _typeName) exitWith {
+		if (_weapon isKindOf _typeName) exitWith {
 			_returnCostWep = _x select 1;
 		};
 	} forEach _getCostsWep;
@@ -257,7 +274,7 @@ while {true} do {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
 				{
 					_weaponName = _x select 1;
-					_costs = [_weaponName,_rearm_costs] call _fnc_getCostsWep;
+					_costs = [_x select 0,_rearm_costs] call _fnc_getCostsWep;
 					_actionTitle = [format["%1 %2",localize "config_depot.sqf5",_weaponName],_costs] call _fnc_actionTitle;
 					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];

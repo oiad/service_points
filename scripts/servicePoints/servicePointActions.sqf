@@ -116,6 +116,13 @@ if (_enoughMoney) then {
 			_magazines = getArray (configFile >> "CfgWeapons" >> _weaponType >> "magazines");
 			_ammo = _magazines select 0;
 
+			{
+				if (_ammo == (_x select 0)) then {_ammo = (_x select 1);};
+			} foreach [
+				["ARTY_12Rnd_227mmHE_M270","12Rnd_MLRS"],
+				["ARTY_40Rnd_120mmHE_BM21","40Rnd_GRAD"]
+			];
+
 			for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 
 			[format[localize "STR_CL_SP_REARMED",_weaponName,_name],1] call dayz_rollingMessages;

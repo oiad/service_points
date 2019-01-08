@@ -260,17 +260,18 @@ while {true} do {
 			};
 			_lastVehicle = _vehicle;
 			_lastRole = _role;
-			if ((SP_refuel_action < 0) && {_refuel_enable}) then {
+			_findNearestGen = {((alive _x) && (_x getVariable ["GeneratorRunning",false]))} count (([player] call FNC_getPos) nearObjects ["Generator_DZ",_maxDistance]);
+			if ((SP_refuel_action < 0) && {_refuel_enable} && (_findNearestGen > 0)) then {
 				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf8",_costs] call _fnc_actionTitle;
 				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
-			if ((SP_repair_action < 0) && {_repair_enable}) then {
+			if ((SP_repair_action < 0) && {_repair_enable} && (_findNearestGen > 0)) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf1",_costs] call _fnc_actionTitle;
 				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
-			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable}) then {
+			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable} && (_findNearestGen > 0)) then {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
 				{
 					_weaponName = _x select 1;
@@ -279,6 +280,9 @@ while {true} do {
 					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];
 				} forEach _weapons;
+			};
+			if ((SP_refuel_action < 0) && (_findNearestGen < 1)) then {
+				SP_refuel_action = player addAction [format["<t color='#ff0000'>%1 for %2,%3,%4</t>",localize "STR_EPOCH_ACTIONS_NEEDPOWER",localize "config_depot.sqf8",localize "config_depot.sqf1",localize "config_depot.sqf5"], "",[], -1, false, true];
 			};
 			if (!_messageShown && {_message != ""}) then {
 				_messageShown = true;

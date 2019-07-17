@@ -207,7 +207,7 @@ _fnc_getCostsWep = {
 	_returnCostWep = _rearm_defaultcost;
 	{
 		_typeName = _x select 0;
-		if (_weapon isKindOf _typeName) exitWith {
+		if (_typeName in ([(configFile >> "CfgWeapons" >> _weapon),true] call BIS_fnc_returnParents)) exitWith {
 			_returnCostWep = _x select 1;
 		};
 	} forEach _getCostsWep;

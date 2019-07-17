@@ -119,6 +119,7 @@ if (_enoughMoney) then {
 			{
 				if (_ammo == (_x select 0)) then {_ammo = (_x select 1);};
 			} foreach [
+				["24Rnd_120mmHE_M120","24Rnd_120mmHE_M120_02"],
 				["ARTY_12Rnd_227mmHE_M270","12Rnd_MLRS"],
 				["ARTY_40Rnd_120mmHE_BM21","40Rnd_GRAD"]
 			];

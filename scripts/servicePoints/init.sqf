@@ -29,13 +29,12 @@
 	Valid vehicle config classes as an example: "Air", "AllVehicles", "All", "APC", "Bicycle", "Car", "Helicopter", "Land", "Motorcycle", "Plane", "Ship", "Tank"
 */
 
-private ["_folder","_servicePointClasses","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_getWeapons","_rearm_ignore","_cycleTime","_servicePoints","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName","_disabledText","_freeText"];
+private ["_folder","_refuelPointClasses","_refuelPoints","_rearmPointClasses","_rearmPoints","_repairPointClasses","_repairPoints","_maxDistance","_actionTitleFormat","_actionCostsFormat","_message","_messageShown","_refuel_enable","_refuel_costs","_refuel_updateInterval","_refuel_amount","_repair_enable","_repair_costs","_repair_repairTime","_rearm_enable","_rearm_defaultcost","_rearm_costs","_rearm_magazineCount","_lastVehicle","_lastRole","_fnc_removeActions","_fnc_getCostsWep","_fnc_getCostsWep","_fnc_actionTitle","_fnc_isArmed","_fnc_getWeapons","_rearm_ignore","_cycleTime","_vehicle","_role","_costs","_actionTitle","_weapons","_weaponName","_disabledText","_freeText"];
 
 diag_log "Service Points: loading config...";
 
 // general settings
 _folder = "scripts\servicePoints\"; // folder where the service point scripts are saved, relative to the mission file
-_servicePointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _maxDistance = 50; // maximum distance from a service point for the options to be shown
 _actionTitleFormat = "%1 (%2)"; // text of the vehicle menu, %1 = action name (Refuel, Repair, Rearm), %2 = costs (see format below)
 _actionCostsFormat = "%2 %1"; // %1 = item name, %2 = item count
@@ -45,6 +44,7 @@ _disabledText = (localize "str_temp_param_disabled"); // Disabled text to show u
 _freeText = (localize "strwffree"); // Free text to show up when items are free, DO NOT CHANGE.
 
 // refuel settings
+_refuelPointClasses = ["Map_A_FuelStation_Feed","Land_A_FuelStation_Feed","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _refuel_enable = true; // enable or disable the refuel option
 _refuel_costs = [
 	["Land",_freeText], // All vehicles are free to refuel.
@@ -54,6 +54,7 @@ _refuel_updateInterval = 1; // update interval (in seconds)
 _refuel_amount = 0.05; // amount of fuel to add with every update (in percent)
 
 // repair settings
+_repairPointClasses = ["Land_repair_center","Land_bus_depo_geo2"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _repair_enable = true; // enable or disable the repair option
 _repair_repairTime = 2; // time needed to repair each damaged part (in seconds)
 _repair_costs = [
@@ -62,6 +63,7 @@ _repair_costs = [
 ];
 
 // rearm settings
+_rearmPointClasses = ["Land_garaz_bez_tanku"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _rearm_enable = true; // enable or disable the rearm option
 _rearm_defaultcost = 10000; // Default cost to rearm a weapon. (10000 worth == 1 briefcase)
 _rearm_magazineCount = 1; // amount of magazines to be added to the vehicle weapon
@@ -248,8 +250,10 @@ _fnc_getWeapons = {
 while {true} do {
 	_vehicle = vehicle player;
 	if (_vehicle != player) then {
-		_servicePoints = (nearestObjects [getPosATL _vehicle,_servicePointClasses,_maxDistance]) - [_vehicle];
-		if (count _servicePoints > 0) then {
+		_refuelPoints = (nearestObjects [getPosATL _vehicle,_refuelPointClasses,_maxDistance]) - [_vehicle];
+		_rearmPoints = (nearestObjects [getPosATL _vehicle,_rearmPointClasses,_maxDistance]) - [_vehicle];
+		_repairPoints = (nearestObjects [getPosATL _vehicle,_repairPointClasses,_maxDistance]) - [_vehicle];
+		if (((count _refuelPoints) + (count _rearmPoints) + (count _repairPoints)) > 0) then {
 			if (assignedDriver _vehicle == player) then {
 				_role = ["Driver", [-1]];
 			} else {
@@ -261,17 +265,17 @@ while {true} do {
 			_lastVehicle = _vehicle;
 			_lastRole = _role;
 			_findNearestGen = {((alive _x) && (_x getVariable ["GeneratorRunning",false]))} count (([player] call FNC_getPos) nearObjects ["Generator_DZ",_maxDistance]);
-			if ((SP_refuel_action < 0) && {_refuel_enable} && (_findNearestGen > 0)) then {
+			if ((SP_refuel_action < 0) && {_refuel_enable} && (count _refuelPoints > 0)) then {
 				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf8",_costs] call _fnc_actionTitle;
 				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
-			if ((SP_repair_action < 0) && {_repair_enable} && (_findNearestGen > 0)) then {
+			if ((SP_repair_action < 0) && {_repair_enable} && (count _repairPoints > 0)) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf1",_costs] call _fnc_actionTitle;
 				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
-			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable} && (_findNearestGen > 0)) then {
+			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable} && (_findNearestGen > 0) && (count _rearmPoints > 0)) then {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
 				{
 					_weaponName = _x select 1;

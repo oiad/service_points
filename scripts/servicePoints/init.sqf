@@ -54,7 +54,7 @@ _refuel_updateInterval = 1; // update interval (in seconds)
 _refuel_amount = 0.05; // amount of fuel to add with every update (in percent)
 
 // repair settings
-_repairPointClasses = ["Land_repair_center","Land_bus_depo_geo2"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
+_repairPointClasses = ["Land_repair_center","Land_bus_depo_geo2","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _repair_enable = true; // enable or disable the repair option
 _repair_repairTime = 2; // time needed to repair each damaged part (in seconds)
 _repair_costs = [
@@ -63,7 +63,7 @@ _repair_costs = [
 ];
 
 // rearm settings
-_rearmPointClasses = ["Land_garaz_bez_tanku"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
+_rearmPointClasses = ["Land_garaz_bez_tanku","Land_aif_heavyf","FuelPump_DZ"]; // service point classes, You can also use dayz_fuelpumparray by its self for all the default fuel pumps.
 _rearm_enable = true; // enable or disable the rearm option
 _rearm_defaultcost = 10000; // Default cost to rearm a weapon. (10000 worth == 1 briefcase)
 _rearm_magazineCount = 1; // amount of magazines to be added to the vehicle weapon
@@ -250,10 +250,10 @@ _fnc_getWeapons = {
 while {true} do {
 	_vehicle = vehicle player;
 	if (_vehicle != player) then {
-		_refuelPoints = (nearestObjects [getPosATL _vehicle,_refuelPointClasses,_maxDistance]) - [_vehicle];
-		_rearmPoints = (nearestObjects [getPosATL _vehicle,_rearmPointClasses,_maxDistance]) - [_vehicle];
-		_repairPoints = (nearestObjects [getPosATL _vehicle,_repairPointClasses,_maxDistance]) - [_vehicle];
-		if (((count _refuelPoints) + (count _rearmPoints) + (count _repairPoints)) > 0) then {
+		_refuelPoints = count ((nearestObjects [getPosATL _vehicle,_refuelPointClasses,_maxDistance]) - [_vehicle]);
+		_rearmPoints = count ((nearestObjects [getPosATL _vehicle,_rearmPointClasses,_maxDistance]) - [_vehicle]);
+		_repairPoints = count ((nearestObjects [getPosATL _vehicle,_repairPointClasses,_maxDistance]) - [_vehicle]);
+		if ((_refuelPoints + _rearmPoints + _repairPoints) > 0) then {
 			if (assignedDriver _vehicle == player) then {
 				_role = ["Driver", [-1]];
 			} else {
@@ -264,18 +264,17 @@ while {true} do {
 			};
 			_lastVehicle = _vehicle;
 			_lastRole = _role;
-			_findNearestGen = {((alive _x) && (_x getVariable ["GeneratorRunning",false]))} count (([player] call FNC_getPos) nearObjects ["Generator_DZ",_maxDistance]);
-			if ((SP_refuel_action < 0) && {_refuel_enable} && (count _refuelPoints > 0) && (_findNearestGen > 0)) then {
-				_costs = [_vehicle,_refuel_costs] call _fnc_getCosts;
+			if ((SP_refuel_action < 0) && {_refuel_enable} && (_refuelPoints > 0)) then {
+				_costs = round (([_vehicle,_refuel_costs] call _fnc_getCosts) * (1.0 - fuel _vehicle));
 				_actionTitle = [localize "config_depot.sqf8",_costs] call _fnc_actionTitle;
 				SP_refuel_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["refuel",_costs,_refuel_updateInterval,_refuel_amount],-1,false,true];
 			};
-			if ((SP_repair_action < 0) && {_repair_enable} && (count _repairPoints > 0)) then {
+			if ((SP_repair_action < 0) && {_repair_enable} && (_repairPoints > 0)) then {
 				_costs = [_vehicle,_repair_costs] call _fnc_getCosts;
 				_actionTitle = [localize "config_depot.sqf1",_costs] call _fnc_actionTitle;
 				SP_repair_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["repair",_costs,_repair_repairTime],-1,false,true];
 			};
-			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable} && (count _rearmPoints > 0)) then {
+			if ((count _role > 1) && {count SP_rearm_actions == 0} && {_rearm_enable} && (_rearmPoints > 0)) then {
 				_weapons = [_vehicle,_role] call _fnc_getWeapons;
 				{
 					_weaponName = _x select 1;
@@ -284,9 +283,6 @@ while {true} do {
 					SP_rearm_action = _vehicle addAction [_actionTitle,_folder + "servicePointActions.sqf",["rearm",_costs,_rearm_magazineCount,_x],-1,false,true];
 					SP_rearm_actions set [count SP_rearm_actions, SP_rearm_action];
 				} forEach _weapons;
-			};
-			if ((SP_refuel_action < 0) && (_findNearestGen < 1)) then {
-				SP_refuel_action = player addAction [format["<t color='#ff0000'>%1 for %2,%3,%4</t>",localize "STR_EPOCH_ACTIONS_NEEDPOWER",localize "config_depot.sqf8",localize "config_depot.sqf1",localize "config_depot.sqf5"], "",[], -1, false, true];
 			};
 			if (!_messageShown && {_message != ""}) then {
 				_messageShown = true;

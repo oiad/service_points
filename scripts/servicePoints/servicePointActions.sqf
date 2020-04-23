@@ -62,6 +62,7 @@ if (_enoughMoney) then {
 		};
 		[player,50,true,getPosATL player] spawn player_alertZombies;
 		_vehicle engineOn false;
+		[player,50,true,getPosATL player] spawn player_alertZombies;
 		if (_action == "refuel") then {
 			[format[localize "STR_CL_SP_REFUELING",_name],1] call dayz_rollingMessages;
 			[_vehicle,"refuel",0,false] call dayz_zombieSpeak;
@@ -124,6 +125,9 @@ if (_enoughMoney) then {
 				["ARTY_40Rnd_120mmHE_BM21","40Rnd_GRAD"]
 			];
 
+			if (_vehicle isKindOf "Air") then {
+				_vehicle removeMagazinesTurret [_ammo,_turret];
+			};
 			for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 
 			[format[localize "STR_CL_SP_REARMED",_weaponName,_name],1] call dayz_rollingMessages;

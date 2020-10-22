@@ -20,7 +20,7 @@ _amount = (_this select 3) select 1;
 if (_action == "rearm") then {
 	_magazineCount = (_this select 3) select 2;
 	_weapon = (_this select 3) select 3;
-	
+
 	_weaponType = _weapon select 0;
 	_weaponName = _weapon select 1;
 	_turret = _weapon select 2;
@@ -60,6 +60,7 @@ if (_enoughMoney) then {
 		if (Z_SingleCurrency) then {
 			player setVariable[Z_MoneyVariable,(_wealth - _amount),true];
 		};
+
 		[player,50,true,getPosATL player] spawn player_alertZombies;
 		_vehicle engineOn false;
 		if (_action == "refuel") then {
@@ -121,10 +122,6 @@ if (_enoughMoney) then {
 				for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 				_vehicle addWeaponTurret ["CMFlareLauncher",_turret];
 			} else {
-				_turret = _weapon select 2;
-				_magazines = getArray (configFile >> "CfgWeapons" >> _weaponType >> "magazines");
-				_ammo = _magazines select 0;
-						
 				{_vehicle removeMagazinesTurret [_x,_turret];} forEach _magazines;
 
 				for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};

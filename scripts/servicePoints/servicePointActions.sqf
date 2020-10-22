@@ -121,6 +121,9 @@ if (_enoughMoney) then {
 				for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 				_vehicle addWeaponTurret ["CMFlareLauncher",_turret];
 			} else {
+				_magazines = _vehicle magazinesTurret _turret;
+				{_vehicle removeMagazineTurret [_ammo,_turret];} forEach _magazines;
+
 				for "_i" from 1 to _magazineCount do {_vehicle addMagazineTurret [_ammo,_turret];};
 			};
 

@@ -1,12 +1,12 @@
 # Service Points
-Axe Cops service point script updated for 1.0.6.2 by salival
+Service point script updated for 1.0.7 by Airwaves Man
 
 Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-vehicle-service-point-refuel-repair-rearm-updated-for-106/
 
 	(original github url: https://github.com/vos/dayz/tree/master/service_point)
 	(original install/discussion url: https://epochmod.com/forum/topic/3935-release-vehicle-service-point-refuel-repair-rearm-script/)
 	
-**** *REQUIRES DAYZ EPOCH 1.0.6.2* ****
+**** *REQUIRES DAYZ EPOCH 1.0.7* ****
 	
 Major Changes:
 
@@ -58,35 +58,84 @@ Installation Steps -
 
 5. Edit "scripts/servicePoints\init.sqf" and customize it to your preference.
 
-6. Download the <code>stringTable.xml</code> file linked below from the [Community Localization GitHub](https://github.com/oiad/communityLocalizations) and copy it to your mission folder, it is a community based localization file and contains translations for major community mods including this one.
+**** *For Epoch 1.0.6.2 only* ****
+**[>> Download <<](https://github.com/oiad/service_points/archive/refs/tags/Epoch_1.0.6.2.zip)**
 
-**[>> Download stringTable.xml <<](https://github.com/oiad/communityLocalizations/blob/master/stringTable.xml)**
+Visit this link: https://github.com/oiad/service_points/tree/Epoch_1.0.6.2
 
-# Battleye filter install.
+# Battleye filter install. 
 
 1. In your config\<yourServerName>\Battleye\scripts.txt around line 2: <code>5 addAction</code> add this to the end of it:
 
 	```sqf
-	!"_vehicle addAction [_actionTitle"
+	!"_costs] call _fnc_actionTitle;\nSP_refuel_action = _vehicle addAction [_actionTitle,_folder + \"servicePointActions.sqf\",[\"refuel\""
 	```
 
 	So it will then look like this for example:
 
 	```sqf
-	5 addAction <CUT> !"_vehicle addAction [_actionTitle"
+	5 addAction <CUT> !"_costs] call _fnc_actionTitle;\nSP_refuel_action = _vehicle addAction [_actionTitle,_folder + \"servicePointActions.sqf\",[\"refuel\""
 	```
+2. In your config\<yourServerName>\Battleye\scripts.txt around line 54: <code>1 nearestObjects</code> add this to the end of it:
 
-2. In your config\<yourServerName>\Battleye\scripts.txt around line 52: <code>5 setDamage</code> add this to the end of it:
+	```sqf
+	!"player;\nif (_vehicle != player) then {\n_servicePoints = (nearestObjects [getPosATL _vehicle,_servicePointClasses,_maxDistance]) "
+	```
+	So it will then look like this for example:
+	
+	```sqf
+	1 nearestObjects <CUT> !"player;\nif (_vehicle != player) then {\n_servicePoints = (nearestObjects [getPosATL _vehicle,_servicePointClasses,_maxDistance]) "
+	```	
+3. In your config\<yourServerName>\Battleye\scripts.txt around line 85: <code>5 title</code> add this to the end of it:
+
+	```sqf
+	!"ate [\"_folder\",\"_servicePointClasses\",\"_maxDistance\",\"_actionTitleFormat\",\"_actionCostsFormat\",\"_message\",\"_messageShown\",\"_refu"
+	```
+	So it will then look like this for example:
+
+	```sqf
+	5 title <CUT> !"ate [\"_folder\",\"_servicePointClasses\",\"_maxDistance\",\"_actionTitleFormat\",\"_actionCostsFormat\",\"_message\",\"_messageShown\",\"_refu"
+	```	
+4. In your config\<yourServerName>\Battleye\scripts.txt around line 5: <code>5 addWeapon</code> add this to the end of it:
+
+	```sqf
+	!"do {_vehicle addMagazineTurret [_ammo,_turret];};\n_vehicle addWeaponTurret [\"CMFlareLauncher\",_turret];\n} else {\n{_vehicle remov"
+	```
+	So it will then look like this for example:
+
+	```sqf
+	5 addWeapon <CUT> !"do {_vehicle addMagazineTurret [_ammo,_turret];};\n_vehicle addWeaponTurret [\"CMFlareLauncher\",_turret];\n} else {\n{_vehicle remov"
+	```		
+5. In your config\<yourServerName>\Battleye\scripts.txt around line 64: <code>5 setDamage</code> add this to the end of it:
 
 	```sqf
 
-	!="if (_allRepaired) then {\n_vehicle setDamage 0;"
+	!"Server \"PVDZ_veh_Save\";\n\nif (_allRepaired) then {\n_vehicle setDamage 0;\n_vehicle setVelocity [0,0,1];\n[format[localize \"STR_CL_S"
 	```
 
 	So it will then look like this for example:
 
 	```sqf
-	5 setDamage <CUT> !="if (_allRepaired) then {\n_vehicle setDamage 0;"
+	5 setDamage <CUT> !"Server \"PVDZ_veh_Save\";\n\nif (_allRepaired) then {\n_vehicle setDamage 0;\n_vehicle setVelocity [0,0,1];\n[format[localize \"STR_CL_S"
 	```
+6. In your config\<yourServerName>\Battleye\scripts.txt around line 17: <code>1 cashMoney</code> add this to the end of it:
 
-Credits - Axe Cop, salival
+	```sqf
+	!"= [false, [], [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_Single"
+	```
+	So it will then look like this for example:
+
+	```sqf
+	1 cashMoney <CUT> !"= [false, [], [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_Single"
+	```	
+7. In your config\<yourServerName>\Battleye\scripts.txt around line 43: <code>1 globalMoney</code> add this to the end of it:
+
+	```sqf
+	!" [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_SingleCurrency) the"
+	```
+	So it will then look like this for example:
+
+	```sqf
+	1 globalMoney <CUT>!" [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_SingleCurrency) the"
+	```		
+Credits - Axe Cop, salival, Airwaves Man

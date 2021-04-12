@@ -1,4 +1,4 @@
-# Service Points
+# Service Points for Epoch 1.0.7
 Service point script updated for 1.0.7 by Airwaves Man
 
 Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-vehicle-service-point-refuel-repair-rearm-updated-for-106/
@@ -10,7 +10,7 @@ Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-ve
 	
 Major Changes:
 
-	This version adds support for both single currency and gems (from the epoch 1.0.6 update) as well as the original epoch briefcase currency system. 
+	This version adds support for both single currency and gems (from the epoch 1.0.7 update) as well as the original epoch briefcase currency system. 
 	Instead of pricing things like the original way, prices are now done on a "worth" similar to how coins are done. The price value of items are below.
 	If you are using coins, I would recommend using the _currencyModifier variable since coins typically are 10x the value of briefcase based currency (1 brief == 100,000 coins)
 	(You can either set this _currencyModifier variable to 1 then set the proper value or use the modifier, the modifier is mainly for dual currency servers)

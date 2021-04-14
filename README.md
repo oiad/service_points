@@ -7,6 +7,12 @@ Discussion thread on EpochMod: https://epochmod.com/forum/topic/43075-release-ve
 	(original install/discussion url: https://epochmod.com/forum/topic/3935-release-vehicle-service-point-refuel-repair-rearm-script/)
 	
 **** *REQUIRES DAYZ EPOCH 1.0.7* ****
+
+# Index:
+
+* [Mission folder install](https://github.com/oiad/service_points#mission-folder-install)
+* [BattlEye filter install](https://github.com/oiad/service_points#battleye-filter-install)
+* [Old Releases](https://github.com/oiad/service_points#old-releases)
 	
 Major Changes:
 
@@ -38,7 +44,7 @@ Major Changes:
 
 **[>> Download <<](https://github.com/oiad/service_points/archive/master.zip)**
 
-Installation Steps -
+# Mission folder install:
 
 1. In your \dayzinstallfolder\MPMissions\DayZ_Epoch_11.Chernarus folder (or similar), create a subfolder called "scripts/service_points" or use another name if a folder with other add-on scripts exists.
 
@@ -58,12 +64,7 @@ Installation Steps -
 
 5. Edit "scripts/servicePoints\init.sqf" and customize it to your preference.
 
-**** *For Epoch 1.0.6.2 only* ****
-**[>> Download <<](https://github.com/oiad/service_points/archive/refs/tags/Epoch_1.0.6.2.zip)**
-
-Visit this link: https://github.com/oiad/service_points/tree/Epoch_1.0.6.2
-
-# Battleye filter install. 
+# Battleye filter install: 
 
 1. In your config\<yourServerName>\Battleye\scripts.txt around line 2: <code>5 addAction</code> add this to the end of it:
 
@@ -139,3 +140,11 @@ Visit this link: https://github.com/oiad/service_points/tree/Epoch_1.0.6.2
 	1 globalMoney <CUT>!" [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_SingleCurrency) the"
 	```		
 Credits - Axe Cop, salival, Airwaves Man
+
+# Old Releases:
+
+**** *Epoch 1.0.6.2* ****
+**[>> Download <<](https://github.com/oiad/service_points/archive/refs/tags/Epoch_1.0.6.2.zip)**
+
+
+

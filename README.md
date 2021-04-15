@@ -119,7 +119,7 @@ Major Changes:
 	```sqf
 	5 setDamage <CUT> !"Server \"PVDZ_veh_Save\";\n\nif (_allRepaired) then {\n_vehicle setDamage 0;\n_vehicle setVelocity [0,0,1];\n[format[localize \"STR_CL_S"
 	```
-6. In your config\<yourServerName>\Battleye\scripts.txt around line 17: <code>1 cashMoney</code> add this to the end of it:
+6. In your config\<yourServerName>\Battleye\scripts.txt around line 17: <code>5 cashMoney</code> add this to the end of it:
 
 	```sqf
 	!"= [false, [], [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_Single"
@@ -127,9 +127,9 @@ Major Changes:
 	So it will then look like this for example:
 
 	```sqf
-	1 cashMoney <CUT> !"= [false, [], [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_Single"
+	5 cashMoney <CUT> !"= [false, [], [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_Single"
 	```	
-7. In your config\<yourServerName>\Battleye\scripts.txt around line 43: <code>1 globalMoney</code> add this to the end of it:
+7. In your config\<yourServerName>\Battleye\scripts.txt around line 43: <code>5 globalMoney</code> add this to the end of it:
 
 	```sqf
 	!" [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_SingleCurrency) the"
@@ -137,7 +137,7 @@ Major Changes:
 	So it will then look like this for example:
 
 	```sqf
-	1 globalMoney <CUT>!" [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_SingleCurrency) the"
+	5 globalMoney <CUT>!" [], [], 0];\n_wealth = player getVariable [([\"cashMoney\",\"globalMoney\"] select Z_persistentMoney),0];\n\nif (Z_SingleCurrency) the"
 	```		
 Credits - Axe Cop, salival, Airwaves Man
 
